@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #ff758c, #ff7eb3, #ff4d6d, #ffd1dc);
+    background-size: 400% 400%;
+    animation: bgMove 12s ease infinite;
+    overflow: hidden;
+}
+
+.glow-text {
+    animation: slideGlow 0.8s ease-out forwards;
+}
+
+@keyframes bgMove {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes slideGlow {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    position: relative;
+    background: rgba(0,0,0,0.25);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 420px;
+    z-index: 10;
+    animation: popIn 0.8s ease-out forwards;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.85) translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    opacity: 1;
+    transform: translateY(25px);
+}
+
+#yesBtn {
+    background: #ff4d6d;
+    color: white;
+    animation: btnIn 0.8s ease-out 0.4s forwards, pulse 1.5s infinite 1.2s;
+}
+
+#noBtn {
+    background: white;
+    color: #ff4d6d;
+    position: relative;
+    animation: btnIn 0.8s ease-out 0.6s forwards;
+}
+
+@keyframes btnIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+.hidden { display: none; }
+
+.gifts {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.gift {
+    background: white;
+    color: #ff4d6d;
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 120px;
+}
+
+.letter {
+    background: white;
+    color: #333;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.heart-fill{
+    --tile: 56px;
+    --gap: 8px;
+
+    display: grid;
+    grid-template-columns: repeat(7, var(--tile));
+    grid-auto-rows: var(--tile);
+    gap: var(--gap);
+
+    justify-content: center;
+    align-content: start;
+
+    width: calc(7 * var(--tile) + 6 * var(--gap));
+    margin: 14px auto 0;
+    padding-top: 6px;
+}
+
+/* Responsive */
+@media (max-width: 420px){
+    .heart-fill{ --tile: 50px; --gap: 7px; }
+}
+@media (max-width: 360px){
+    .heart-fill{ --tile: 46px; --gap: 6px; }
+}
+
+.heart-fill img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid white;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.30);
+    position: static; /* key: allow grid to place it */
+    z-index: 1;
+}
+
+/* Perfect 7-column heart shape = 27 photos */
+.heart-fill img:nth-child(1)  { grid-row: 1; grid-column: 2; }
+.heart-fill img:nth-child(2)  { grid-row: 1; grid-column: 3; }
+.heart-fill img:nth-child(3)  { grid-row: 1; grid-column: 5; }
+.heart-fill img:nth-child(4)  { grid-row: 1; grid-column: 6; }
+
+.heart-fill img:nth-child(5)  { grid-row: 2; grid-column: 1; }
+.heart-fill img:nth-child(6)  { grid-row: 2; grid-column: 2; }
+.heart-fill img:nth-child(7)  { grid-row: 2; grid-column: 3; }
+.heart-fill img:nth-child(8)  { grid-row: 2; grid-column: 4; }
+.heart-fill img:nth-child(9)  { grid-row: 2; grid-column: 5; }
+.heart-fill img:nth-child(10) { grid-row: 2; grid-column: 6; }
+.heart-fill img:nth-child(11) { grid-row: 2; grid-column: 7; }
+
+.heart-fill img:nth-child(12) { grid-row: 3; grid-column: 1; }
+.heart-fill img:nth-child(13) { grid-row: 3; grid-column: 2; }
+.heart-fill img:nth-child(14) { grid-row: 3; grid-column: 3; }
+.heart-fill img:nth-child(15) { grid-row: 3; grid-column: 4; }
+.heart-fill img:nth-child(16) { grid-row: 3; grid-column: 5; }
+.heart-fill img:nth-child(17) { grid-row: 3; grid-column: 6; }
+.heart-fill img:nth-child(18) { grid-row: 3; grid-column: 7; }
+
+.heart-fill img:nth-child(19) { grid-row: 4; grid-column: 2; }
+.heart-fill img:nth-child(20) { grid-row: 4; grid-column: 3; }
+.heart-fill img:nth-child(21) { grid-row: 4; grid-column: 4; }
+.heart-fill img:nth-child(22) { grid-row: 4; grid-column: 5; }
+.heart-fill img:nth-child(23) { grid-row: 4; grid-column: 6; }
+
+.heart-fill img:nth-child(24) { grid-row: 5; grid-column: 3; }
+.heart-fill img:nth-child(25) { grid-row: 5; grid-column: 4; }
+.heart-fill img:nth-child(26) { grid-row: 5; grid-column: 5; }
+
+.heart-fill img:nth-child(27) { grid-row: 6; grid-column: 4; }
+
+.back-btn {
+    position: relative !important;
+    z-index: 100 !important;
+    margin-top: 25px !important;
+    padding: 12px 24px !important;
+    border-radius: 25px !important;
+    border: none !important;
+    background: #ff1744 !important;
+    color: #ffffff !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-shadow: 0 6px 20px rgba(255,23,68,0.6) !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+    visibility: visible !important;
+    opacity: 1 !important;   
+    transform: none !important; 
+}
+
+
+
+
+.subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 15px;
+    animation: fadeIn 2s ease-in-out infinite alternate;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+}
+
+.kiss {
+    position: absolute;
+    font-size: 30px;
+    animation: floatUp 4s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+    100% { opacity: 0; transform: translateY(-200px) rotate(360deg); }
+}
+
+.firework {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: pink;
+    border-radius: 50%;
+    animation: explode 1.5s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes explode {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(5); opacity: 0; }
+}
+
+.bg-heart {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.4;
+    animation: bgFloat 10s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes bgFloat {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-10vh) rotate(360deg); }
+}
+
+.big-heart {
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.25;
+    animation: floatUpSlow 14s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes floatUpSlow {
+    0% { transform: translateY(110vh) scale(0.8) rotate(0deg); }
+    100% { transform: translateY(-10vh) scale(1.2) rotate(720deg); }
+}
+
+.glow {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff; }
+    to { text-shadow: 0 0 30px #ff4d6d; }
+}
+
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(255,255,255,0.9);
+    opacity: 0;
+    animation: sparkleFloat 2.2s ease-out forwards;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes sparkleFloat {
+    0%   { transform: translateY(0) scale(0.2); opacity: 0; }
+    15%  { opacity: 1; }
+    100% { transform: translateY(-220px) scale(1.2); opacity: 0; }
+}
+
+.mini-heart {
+    position: absolute;
+    font-size: 18px;
+    opacity: 0;
+    animation: miniHeartFloat 3.2s ease-out forwards;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes miniHeartFloat {
+    0%   { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 0; }
+    15%  { opacity: 0.85; }
+    100% { transform: translateY(-260px) scale(1.1) rotate(240deg); opacity: 0; }
+}
+
+/* Photo preview modal (lightbox) */
+.photo-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: none;              /* hidden by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 18px;
+}
+
+.photo-modal.show {
+    display: flex;
+}
+
+.photo-panel {
+    position: relative;
+    width: min(95vw, 440px);
+    max-height: 80vh;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.35);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+    animation: popPreview 0.18s ease-out;
+}
+
+@keyframes popPreview {
+    from { transform: scale(0.92); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.photo-panel img {
+    width: 100%;
+    height: auto;
+    max-height: 72vh;
+    object-fit: contain;
+    border-radius: 12px;
+    display: block;
+}
+
+.photo-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: rgba(255,255,255,0.92);
+    color: #ff1744;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 36px;
+    padding: 0;
+}
+
+#photoPage .heart-fill img {
+    cursor: zoom-in;
+}
+
+
+</style>
+</head>
+
+<body>
+<audio id="music" loop preload="auto">
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="center" id="page1">
+    <div class="container">
+        <h1 class="glow-text glow">Will you be my Valentine? 💖</h1>
+        <p class="subtitle">
+            A small question… but my whole heart depends on your answer 💘
+        </p>
+        <button id="yesBtn" onclick="yesClicked()">YES ❤️</button>
+        <button id="noBtn" onclick="noClicked()">NO 🙄</button>
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="center hidden" id="page2">
+    <div class="container">
+        <h1 class="glow-text glow">She said YES 💘</h1>
+        <p>Choose your gift 🎁</p>
+        <div class="gifts">
+            <div class="gift" onclick="openLetter()">💌 Letter</div>
+            <div class="gift" onclick="openPhotos()">📸 Photos</div>
+        </div>
+    </div>
+</div>
+
+<!-- LETTER -->
+<div class="center hidden" id="letterPage">
+    <div class="container">
+        <h1>My Love 💖</h1>
+        <div class="letter">
+            <p>
+                Dear Love,<br><br>
+                My love 💕, in this chaotic world, you are the calm that steadies my heart 💫. 
+                Your smile 😊 feels like a secret I never want to lose, something that brightens even my darkest days 🌙.
+                Being with you feels like finding meaning in the madness, like everything finally makes sense 💖.
+                We are so different—your fire 🔥 and my silence 🤫—yet together we create something beautifully unexplainable 🌌.
+                When you rise, I find my purpose, and when I fall, it's only into you 💞.
+                You are the rhythm of my heartbeat 💓, the thought that never leaves my mind 💭, and the feeling I never want to escape 🥺.
+                Even when words fail, my love for you speaks in every moment we share ⏳.
+                If forever exists, I want it to be written with you ♾️😘.<br><br>
+                Forever Yours,<br>
+                <b>DarkDevil</b>
+            </p>
+        </div>
+        <button class="back-btn" onclick="goBack()">⬅ Back</button>
+    </div>
+</div>
+
+<!-- PHOTOS -->
+<div class="center hidden" id="photoPage">
+    <div class="container" style="padding-bottom: 80px; max-width: 420px;">
+        <h1>Us ❤️</h1>
+       <div class="heart-fill">
+  <img src="images/1.jpg" alt="Photo 1">
+  <img src="images/2.jpg" alt="Photo 2">
+  <img src="images/3.jpg" alt="Photo 3">
+  <img src="images/4.jpg" alt="Photo 4">
+  <img src="images/5.jpg" alt="Photo 5">
+  <img src="images/6.jpg" alt="Photo 6">
+  <img src="images/7.jpg" alt="Photo 7">
+  <img src="images/8.jpg" alt="Photo 8">
+  <img src="images/9.jpg" alt="Photo 9">
+  <img src="images/10.jpg" alt="Photo 10">
+  <img src="images/11.jpg" alt="Photo 11">
+  <img src="images/12.jpg" alt="Photo 12">
+  <img src="images/13.jpg" alt="Photo 13">
+  <img src="images/14.jpg" alt="Photo 14">
+  <img src="images/15.jpg" alt="Photo 15">
+  <img src="images/16.jpg" alt="Photo 16">
+  <img src="images/17.jpg" alt="Photo 17">
+  <img src="images/18.jpg" alt="Photo 18">
+  <img src="images/19.jpg" alt="Photo 19">
+  <img src="images/20.jpg" alt="Photo 20">
+  <img src="images/21.jpg" alt="Photo 21">
+  <img src="images/22.jpg" alt="Photo 22">
+  <img src="images/23.jpg" alt="Photo 23">
+  <img src="images/24.jpg" alt="Photo 24">
+  <img src="images/25.jpg" alt="Photo 25">
+  <img src="images/26.jpg" alt="Photo 26">
+  <img src="images/27.jpg" alt="Photo 27">
+</div>
+        <button class="back-btn" onclick="goBack()">⬅ Back</button>
+    </div>
+</div>
+
+<!-- Photo Preview Modal -->
+<div id="photoModal" class="photo-modal" onclick="closePhotoPreview()">
+  <div class="photo-panel" onclick="event.stopPropagation()">
+    <button class="photo-close" onclick="closePhotoPreview()">×</button>
+    <img id="photoModalImg" src="" alt="Preview">
+  </div>
+</div>
+
+<script>
+let noCount = 0;
+const noMessages = [
+    "are you sure? 🥺👉👈",
+    "please, just one more chance 😢💗",
+    "think about it once… for me 💔🥹",
+    "please don’t say no like that 🥺✨",
+    "just say yes once, please 😌💞",
+    "if you say no again, my heart will break 😤💘",
+    "this is my last chance… please 🥹😑"
+];
+
+let introSparkleTimer = null;
+let introHeartTimer = null;
+
+function startIntroEffects() {
+    if (introSparkleTimer || introHeartTimer) return;
+
+    introSparkleTimer = setInterval(() => {
+        if (document.getElementById("page1").classList.contains("hidden")) return;
+
+        const s = document.createElement("div");
+        s.className = "sparkle";
+        s.style.left = Math.random() * 100 + "%";
+        s.style.bottom = "0px";
+        s.style.animationDuration = (1.6 + Math.random() * 1.2) + "s";
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 3000);
+    }, 120);
+
+    const hearts = ["💗","💖","💘","💕"];
+    introHeartTimer = setInterval(() => {
+        if (document.getElementById("page1").classList.contains("hidden")) return;
+
+        const h = document.createElement("div");
+        h.className = "mini-heart";
+        h.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+        h.style.left = Math.random() * 100 + "%";
+        h.style.bottom = "0px";
+        h.style.animationDuration = (2.2 + Math.random() * 1.4) + "s";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 4000);
+    }, 220);
+}
+
+function stopIntroEffects() {
+    clearInterval(introSparkleTimer);
+    clearInterval(introHeartTimer);
+    introSparkleTimer = null;
+    introHeartTimer = null;
+}
+
+function noClicked() {
+    // Fixed: No delay - immediate action
+    const noBtn = document.getElementById("noBtn");
+    noBtn.style.position = "absolute";
+    noBtn.style.top = Math.random()*70 + "%";
+    noBtn.style.left = Math.random()*70 + "%";
+    noBtn.style.zIndex = "1000";
+    
+    const msgIndex = Math.min(noCount, noMessages.length-1);
+    setTimeout(() => {
+        alert(noMessages[msgIndex]);
+    }, 50); // Tiny delay for smooth effect
+    noCount++;
+}
+
+function yesClicked() {
+    stopIntroEffects();
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+    
+    const music = document.getElementById("music");
+    music.volume = 0.3; // Lower volume
+    music.play().catch(e => console.log('Audio play failed'));
+    
+    startKisses();
+    startFireworks();
+}
+
+function openLetter() {
+    pageSwitch("letterPage");
+}
+
+function openPhotos() {
+    pageSwitch("photoPage");
+}
+
+function pageSwitch(id) {
+    document.getElementById("page2").classList.add("hidden");
+    document.getElementById(id).classList.remove("hidden");
+}
+
+function openPhotoPreview(src, alt="") {
+    const modal = document.getElementById("photoModal");
+    const modalImg = document.getElementById("photoModalImg");
+    modalImg.src = src;
+    modalImg.alt = alt;
+    modal.classList.add("show");
+}
+
+function closePhotoPreview() {
+    const modal = document.getElementById("photoModal");
+    const modalImg = document.getElementById("photoModalImg");
+    modal.classList.remove("show");
+    modalImg.src = "";
+}
+
+function goBack() {
+    closePhotoPreview();
+    document.getElementById("letterPage").classList.add("hidden");
+    document.getElementById("photoPage").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePhotoPreview();
+});
+
+// Animations
+function startKisses() {
+    setInterval(() => {
+        const kiss = document.createElement("div");
+        kiss.className = "kiss";
+        kiss.innerText = "💋";
+        kiss.style.left = Math.random()*100 + "%";
+        kiss.style.bottom = "0px";
+        document.body.appendChild(kiss);
+        setTimeout(() => kiss.remove(), 4000);
+    }, 500);
+}
+
+function startFireworks() {
+    setInterval(() => {
+        const fw = document.createElement("div");
+        fw.className = "firework";
+        fw.style.left = Math.random()*100 + "%";
+        fw.style.top = Math.random()*100 + "%";
+        document.body.appendChild(fw);
+        setTimeout(() => fw.remove(), 1500);
+    }, 300);
+}
+
+// Background hearts
+setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "bg-heart";
+    h.innerText = "❤️";
+    h.style.left = Math.random() * 100 + "%";
+    h.style.animationDuration = (6 + Math.random()*4) + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 10000);
+}, 700);
+
+// Big hearts on start page only
+setInterval(() => {
+    if (!document.getElementById("page1").classList.contains("hidden")) {
+        const h = document.createElement("div");
+        h.className = "big-heart";
+        h.innerText = "❤️";
+        h.style.left = Math.random() * 100 + "%";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 14000);
+    }
+}, 800); // Faster interval
+
+// Page load optimizations
+window.addEventListener('load', () => {
+    startIntroEffects();
+    for (let i = 1; i <= 27; i++) {
+    const img = new Image();
+    img.src = 'images/' + i + '.jpg';
+}
+document.querySelectorAll('#photoPage .heart-fill img').forEach(img => {
+    img.addEventListener('click', () => openPhotoPreview(img.src, img.alt));
+});
+});
+</script>
+
+</body>
+</html>
